@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Money — Financial Awareness for Families & Students</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #E8A830;
+    --gold-light: #FBF0D5;
+    --gold-dark: #A0711A;
+    --forest: #1B4332;
+    --forest-mid: #2D6A4F;
+    --forest-light: #D8F3DC;
+    --sky: #0077B6;
+    --sky-light: #CAF0F8;
+    --coral: #E63946;
+    --coral-light: #FFE5E7;
+    --ink: #1A1A2E;
+    --ink-mid: #3A3A5C;
+    --ash: #F4F4F0;
+    --ash-mid: #E8E8E2;
+    --white: #FFFFFF;
+    --radius: 16px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--ash);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,46,0.96);
+    backdrop-filter: blur(12px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; color: var(--gold); font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 0.25rem; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75); font-size: 0.8rem; font-weight: 500;
+    text-decoration: none; padding: 6px 12px; border-radius: 6px;
+    transition: all 0.2s; letter-spacing: 0.02em; text-transform: uppercase;
+  }
+  .nav-links a:hover { color: var(--gold); background: rgba(232,168,48,0.12); }
+  .nav-cta {
+    background: var(--gold); color: var(--ink) !important;
+    padding: 8px 16px !important; border-radius: 8px !important;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: var(--gold-dark) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh; background: var(--ink);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden; padding-top: 64px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(232,168,48,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 20% 80%, rgba(29,156,117,0.08) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(var(--ash-mid) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--ash-mid) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .hero-content {
+    position: relative; max-width: 1200px; margin: 0 auto; padding: 4rem 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,168,48,0.15); border: 1px solid rgba(232,168,48,0.3);
+    color: var(--gold); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+    color: var(--white); line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold); }
+  .hero p {
+    color: rgba(255,255,255,0.65); font-size: 1.05rem; font-weight: 300;
+    margin-bottom: 2.5rem; max-width: 460px;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--ink); font-family: 'Sora', sans-serif;
+    font-size: 0.9rem; font-weight: 600; padding: 14px 28px;
+    border-radius: 12px; border: none; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  }
+  .btn-primary:hover { background: #f5b730; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.3); font-family: 'Sora', sans-serif;
+    font-size: 0.9rem; font-weight: 500; padding: 14px 28px;
+    border-radius: 12px; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-visual {
+    display: grid; gap: 1rem;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-stat:nth-child(2) { animation-delay: 0.1s; }
+  .hero-stat:nth-child(3) { animation-delay: 0.2s; }
+  .hero-stat-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; flex-shrink: 0;
+  }
+  .hero-stat-num { font-size: 1.6rem; font-weight: 700; color: var(--white); }
+  .hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 2rem; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-tag {
+    display: inline-block; background: var(--forest-light); color: var(--forest);
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 100px; margin-bottom: 1rem;
+  }
+  .section-tag.gold { background: var(--gold-light); color: var(--gold-dark); }
+  .section-tag.sky { background: var(--sky-light); color: var(--sky); }
+  .section-tag.coral { background: var(--coral-light); color: var(--coral); }
+  .section-h { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; line-height: 1.2; margin-bottom: 0.75rem; }
+  .section-sub { color: var(--ink-mid); font-size: 1rem; font-weight: 300; max-width: 560px; }
+
+  /* ── FEATURE 1: BASICS ── */
+  #basics { background: var(--white); }
+  .basics-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    align-items: start; margin-top: 3rem;
+  }
+  .basics-left { }
+  .basics-left p { color: var(--ink-mid); margin-bottom: 1.5rem; font-weight: 300; }
+  .mistake-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .mistake-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--coral-light); border-left: 3px solid var(--coral);
+    padding: 12px 16px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 0.9rem; color: #8B1A1A;
+  }
+  .mistake-item span { font-weight: 600; flex-shrink: 0; }
+  .basics-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .basics-card {
+    background: var(--ash); border-radius: var(--radius); padding: 1.5rem;
+    border: 1px solid var(--ash-mid); transition: all 0.25s;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .basics-card:hover { background: var(--white); box-shadow: var(--shadow); transform: translateX(4px); }
+  .basics-card-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;
+  }
+  .basics-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; color: var(--ink); }
+  .basics-card p { font-size: 0.85rem; color: var(--ink-mid); font-weight: 300; }
+
+  /* ── FEATURE 2: TOPICS ── */
+  #topics { background: var(--ash); }
+  .topics-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .topic-card {
+    background: var(--white); border-radius: var(--radius); padding: 2rem;
+    border: 1px solid var(--ash-mid); transition: all 0.25s; cursor: pointer;
+    position: relative; overflow: hidden;
+  }
+  .topic-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  }
+  .topic-card.green::before { background: var(--forest-mid); }
+  .topic-card.gold::before { background: var(--gold); }
+  .topic-card.sky::before { background: var(--sky); }
+  .topic-card.coral::before { background: var(--coral); }
+  .topic-card.purple::before { background: #7F77DD; }
+  .topic-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+  .topic-emoji { font-size: 2rem; margin-bottom: 1rem; }
+  .topic-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .topic-card > p { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 1.25rem; font-weight: 300; }
+  .topic-expand { display: none; }
+  .topic-card.open .topic-expand { display: block; }
+  .topic-expand .explain {
+    font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 1rem; font-weight: 300;
+    padding: 12px; background: var(--ash); border-radius: var(--radius-sm);
+  }
+  .dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+  .dos, .donts { padding: 10px 12px; border-radius: var(--radius-sm); font-size: 0.8rem; }
+  .dos { background: var(--forest-light); color: var(--forest); }
+  .donts { background: var(--coral-light); color: #8B1A1A; }
+  .dos strong, .donts strong { display: block; font-weight: 700; margin-bottom: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .dos ul, .donts ul { list-style: none; }
+  .dos li::before { content: '✓ '; font-weight: 700; }
+  .donts li::before { content: '✗ '; font-weight: 700; }
+  .topic-btn {
+    font-size: 0.8rem; font-weight: 600; color: var(--forest-mid);
+    background: none; border: none; cursor: pointer; padding: 0; font-family: 'Sora', sans-serif;
+    display: flex; align-items: center; gap: 4px;
+  }
+
+  /* ── FEATURE 3: QUIZ ── */
+  #quiz { background: var(--ink); }
+  #quiz .section-h { color: var(--white); }
+  #quiz .section-sub { color: rgba(255,255,255,0.55); }
+  .quiz-container {
+    max-width: 680px; margin: 3rem auto 0;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius); padding: 2.5rem;
+  }
+  .quiz-progress { display: flex; gap: 6px; margin-bottom: 2rem; }
+  .quiz-dot {
+    flex: 1; height: 4px; border-radius: 2px;
+    background: rgba(255,255,255,0.15); transition: background 0.3s;
+  }
+  .quiz-dot.active { background: var(--gold); }
+  .quiz-dot.done { background: var(--forest-mid); }
+  .quiz-q { font-size: 1.1rem; font-weight: 500; color: var(--white); margin-bottom: 0.5rem; }
+  .quiz-context { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
+  .quiz-options { display: flex; flex-direction: column; gap: 0.75rem; }
+  .quiz-opt {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius-sm); padding: 14px 18px;
+    color: rgba(255,255,255,0.85); font-size: 0.9rem; font-weight: 400;
+    cursor: pointer; transition: all 0.2s; text-align: left; font-family: 'Sora', sans-serif;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .quiz-opt::before {
+    content: attr(data-letter); width: 24px; height: 24px;
+    background: rgba(255,255,255,0.1); border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .quiz-opt:hover { background: rgba(232,168,48,0.12); border-color: rgba(232,168,48,0.4); color: var(--white); }
+  .quiz-opt.correct { background: rgba(29,156,117,0.2); border-color: var(--forest-mid); color: #5DCAA5; }
+  .quiz-opt.wrong { background: rgba(230,57,70,0.2); border-color: var(--coral); color: #F0997B; }
+  .quiz-feedback {
+    margin-top: 1.25rem; padding: 14px 16px; border-radius: var(--radius-sm);
+    font-size: 0.88rem; display: none;
+  }
+  .quiz-feedback.show { display: block; }
+  .quiz-feedback.correct { background: rgba(29,156,117,0.15); color: #5DCAA5; border-left: 3px solid var(--forest-mid); }
+  .quiz-feedback.wrong { background: rgba(230,57,70,0.15); color: #F0997B; border-left: 3px solid var(--coral); }
+  .quiz-next {
+    margin-top: 1.5rem; background: var(--gold); color: var(--ink);
+    border: none; border-radius: var(--radius-sm); padding: 12px 24px;
+    font-family: 'Sora', sans-serif; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; display: none; transition: all 0.2s;
+  }
+  .quiz-next.show { display: inline-flex; align-items: center; gap: 6px; }
+  .quiz-next:hover { background: #f5b730; }
+  .quiz-score {
+    text-align: center; display: none; padding: 2rem 0;
+  }
+  .quiz-score.show { display: block; }
+  .quiz-score-num {
+    font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900;
+    color: var(--gold);
+  }
+  .quiz-score-label { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .quiz-score-msg { color: var(--white); font-size: 1rem; margin-bottom: 1.5rem; }
+  .quiz-restart {
+    background: rgba(255,255,255,0.1); color: var(--white); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: var(--radius-sm); padding: 10px 20px; font-family: 'Sora', sans-serif;
+    font-size: 0.85rem; cursor: pointer; transition: all 0.2s;
+  }
+  .quiz-restart:hover { background: rgba(255,255,255,0.15); }
+
+  /* ── FEATURE 4: CALCULATOR ── */
+  #calculator { background: var(--white); }
+  .calc-tabs { display: flex; gap: 0.5rem; margin: 2rem 0 0; flex-wrap: wrap; }
+  .calc-tab {
+    padding: 10px 20px; border-radius: 100px; font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; border: 1.5px solid var(--ash-mid); background: var(--ash);
+    color: var(--ink-mid); transition: all 0.2s; font-family: 'Sora', sans-serif;
+  }
+  .calc-tab.active { background: var(--forest); border-color: var(--forest); color: var(--white); }
+  .calc-panel { display: none; }
+  .calc-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+  .calc-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 0.8rem; font-weight: 600; color: var(--ink-mid); text-transform: uppercase; letter-spacing: 0.06em; }
+  .form-group input, .form-group select {
+    border: 1.5px solid var(--ash-mid); border-radius: var(--radius-sm);
+    padding: 10px 14px; font-size: 0.95rem; font-family: 'Sora', sans-serif;
+    background: var(--ash); color: var(--ink); transition: border-color 0.2s;
+  }
+  .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--forest-mid); background: var(--white); }
+  .calc-result {
+    background: var(--ink); border-radius: var(--radius); padding: 2rem;
+    color: var(--white);
+  }
+  .calc-result-title { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+  .calc-result-big { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--gold); }
+  .calc-result-rows { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .calc-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 0.875rem;
+  }
+  .calc-row:last-child { border-bottom: none; }
+  .calc-row-label { color: rgba(255,255,255,0.5); }
+  .calc-row-val { font-weight: 600; color: var(--white); }
+  .calc-bar { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); overflow: hidden; margin-top: 1rem; }
+  .calc-bar-fill { height: 100%; border-radius: 3px; background: var(--gold); transition: width 0.5s ease; }
+  .calc-tip { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-top: 1rem; line-height: 1.5; }
+
+  /* ── FEATURE 5: SCAM AWARENESS ── */
+  #scams { background: var(--ash); }
+  .scam-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 3rem; }
+  .scam-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .scam-card {
+    background: var(--white); border-radius: var(--radius); padding: 1.5rem;
+    border: 1px solid var(--ash-mid); display: flex; align-items: flex-start; gap: 1rem;
+    transition: all 0.25s;
+  }
+  .scam-card:hover { box-shadow: var(--shadow); border-color: var(--coral); }
+  .scam-flag {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--coral-light);
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .scam-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--coral); margin-bottom: 4px; }
+  .scam-card p { font-size: 0.82rem; color: var(--ink-mid); font-weight: 300; }
+  .scam-checker {
+    background: var(--white); border-radius: var(--radius); padding: 2rem;
+    border: 1px solid var(--ash-mid);
+  }
+  .scam-checker h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .scam-checker p { font-size: 0.85rem; color: var(--ink-mid); margin-bottom: 1.5rem; font-weight: 300; }
+  .scam-checklist { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 0.875rem; color: var(--ink-mid); cursor: pointer;
+    padding: 10px 12px; border-radius: var(--radius-sm); border: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .check-item:hover { background: var(--ash); border-color: var(--ash-mid); }
+  .check-item.checked { background: var(--forest-light); border-color: rgba(29,156,117,0.3); color: var(--forest); }
+  .check-box {
+    width: 20px; height: 20px; border-radius: 5px; border: 2px solid var(--ash-mid);
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700; transition: all 0.2s;
+  }
+  .check-item.checked .check-box { background: var(--forest-mid); border-color: var(--forest-mid); color: var(--white); }
+  .scam-verdict {
+    margin-top: 1.25rem; padding: 12px 14px; border-radius: var(--radius-sm);
+    font-size: 0.85rem; font-weight: 500; display: none;
+  }
+  .scam-verdict.danger { display: block; background: var(--coral-light); color: #8B1A1A; border-left: 3px solid var(--coral); }
+  .scam-verdict.safe { display: block; background: var(--forest-light); color: var(--forest); border-left: 3px solid var(--forest-mid); }
+
+  /* ── GOVERNMENT SCHEMES ── */
+  #schemes { background: var(--white); }
+  .schemes-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem; margin-top: 2.5rem;
+  }
+  .scheme-card {
+    border-radius: var(--radius); padding: 1.5rem;
+    border: 1px solid var(--ash-mid); transition: all 0.25s;
+  }
+  .scheme-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+  .scheme-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 100px; margin-bottom: 1rem;
+  }
+  .scheme-card h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
+  .scheme-card p { font-size: 0.82rem; color: var(--ink-mid); font-weight: 300; margin-bottom: 0.75rem; }
+  .scheme-detail { font-size: 0.78rem; font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 3rem 2rem; font-size: 0.85rem;
+  }
+  footer strong { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+    .basics-grid { grid-template-columns: 1fr; }
+    .calc-panel.active { grid-template-columns: 1fr; }
+    .scam-intro { grid-template-columns: 1fr; }
+    .dos-donts { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Smart<span>Money</span></div>
+  <div class="nav-links">
+    <a href="#basics">Basics</a>
+    <a href="#topics">Topics</a>
+    <a href="#quiz">Quiz</a>
+    <a href="#calculator">Calculator</a>
+    <a href="#scams">Scam Guard</a>
+    <a href="#schemes" class="nav-cta">Gov Schemes</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-tag">Financial Awareness Initiative</div>
+      <h1>Smart Money<br>Decisions Start <em>Early</em></h1>
+      <p>A free, simple financial literacy platform for students (Classes 6–12), parents, and families. No login needed. No jargon. Just real money skills for real life.</p>
+      <div class="hero-btns">
+        <a href="#basics" class="btn-primary">Start Learning →</a>
+        <a href="#quiz" class="btn-outline">Take the Quiz</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-stat">
+        <div class="hero-stat-icon" style="background:rgba(232,168,48,0.15);">🎓</div>
+        <div>
+          <div class="hero-stat-num">6–12</div>
+          <div class="hero-stat-label">School classes covered</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon" style="background:rgba(29,156,117,0.15);">📱</div>
+        <div>
+          <div class="hero-stat-num">No Login</div>
+          <div class="hero-stat-label">Open access for everyone</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon" style="background:rgba(119,119,221,0.15);">🏡</div>
+        <div>
+          <div class="hero-stat-num">5 Features</div>
+          <div class="hero-stat-label">Learn, practice, calculate, stay safe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 1: BASICS -->
+<section id="basics">
+  <div class="section-inner">
+    <div class="section-tag">Feature 1</div>
+    <h2 class="section-h">Financial Awareness Basics</h2>
+    <p class="section-sub">Why money habits formed today shape your entire life — and how small decisions matter more than you think.</p>
+
+    <div class="basics-grid">
+      <div class="basics-left">
+        <p>Financial awareness means understanding how money works in everyday life — how it is earned, saved, spent, and grown. It is not about becoming wealthy; it is about making <strong>informed choices</strong> instead of impulsive ones.</p>
+        <p>Most families make money decisions based on habit, pressure, or incomplete information. This leads to avoidable stress. The good news? Learning even the basics can change a family's financial trajectory forever.</p>
+        <h3 style="margin-bottom:1rem;font-size:1rem;font-weight:600;color:var(--coral);">⚠️ Common money mistakes families make</h3>
+        <ul class="mistake-list">
+          <li class="mistake-item"><span>❌</span> Borrowing at high interest (30–40% per year on informal loans) for daily needs</li>
+          <li class="mistake-item"><span>❌</span> Spending more than income each month with no budget plan</li>
+          <li class="mistake-item"><span>❌</span> Falling for "get rich quick" schemes and investment frauds</li>
+          <li class="mistake-item"><span>❌</span> Having zero emergency savings — one illness can cause a debt spiral</li>
+          <li class="mistake-item"><span>❌</span> Never checking bank statements or understanding where money goes</li>
+        </ul>
+      </div>
+      <div class="basics-cards">
+        <div class="basics-card">
+          <div class="basics-card-icon" style="background:#D8F3DC;">💰</div>
+          <div>
+            <h4>Earning</h4>
+            <p>Money comes from work, business, or investments. Understanding income sources helps you plan realistically for your family's future.</p>
+          </div>
+        </div>
+        <div class="basics-card">
+          <div class="basics-card-icon" style="background:#FBF0D5;">🏦</div>
+          <div>
+            <h4>Saving</h4>
+            <p>Even ₹50/day saved = ₹18,000/year. Small, consistent savings compound into financial security over time.</p>
+          </div>
+        </div>
+        <div class="basics-card">
+          <div class="basics-card-icon" style="background:#CAF0F8;">📊</div>
+          <div>
+            <h4>Spending</h4>
+            <p>Distinguishing needs (food, rent, medicine) from wants (new phone, eating out) is the foundation of every sound budget.</p>
+          </div>
+        </div>
+        <div class="basics-card">
+          <div class="basics-card-icon" style="background:#E8E0FB;">📈</div>
+          <div>
+            <h4>Investing</h4>
+            <p>Making your savings grow through safe options like Post Office schemes, PPF, or mutual funds — beating inflation over time.</p>
+          </div>
+        </div>
+        <div class="basics-card">
+          <div class="basics-card-icon" style="background:#FFE5E7;">🛡️</div>
+          <div>
+            <h4>Protecting</h4>
+            <p>Insurance and emergency funds protect your family from one bad event wiping out years of savings and hard work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 2: TOPICS -->
+<section id="topics">
+  <div class="section-inner">
+    <div class="section-tag gold">Feature 2</div>
+    <h2 class="section-h">Money Management Topics</h2>
+    <p class="section-sub">Tap any module to expand it and see examples, explanations, and do's & don'ts for each topic.</p>
+
+    <div class="topics-grid" id="topicsGrid">
+
+      <div class="topic-card green" onclick="toggleTopic(this)">
+        <div class="topic-emoji">🏠</div>
+        <h3>Budgeting for Households</h3>
+        <p>Plan where every rupee goes before the month begins.</p>
+        <button class="topic-btn">Read more ↓</button>
+        <div class="topic-expand">
+          <div class="explain">
+            <strong>What is a budget?</strong> A budget is simply a plan. Write down your family's monthly income, then list all expenses. Whatever is left is for savings and emergencies. A simple formula: <em>Income − Fixed Expenses − Savings = Spending Money.</em>
+            <br><br><strong>Real example:</strong> A family earning ₹25,000/month: ₹8,000 rent + ₹5,000 groceries + ₹2,000 school fees + ₹3,000 savings = ₹7,000 flexible spending.
+          </div>
+          <div class="dos-donts">
+            <div class="dos"><strong>✅ Do's</strong><ul><li>Write a budget every month</li><li>Track every expense</li><li>Review and adjust</li></ul></div>
+            <div class="donts"><strong>❌ Don'ts</strong><ul><li>Spend before budgeting</li><li>Ignore small purchases</li><li>Skip savings "this month"</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card gold" onclick="toggleTopic(this)">
+        <div class="topic-emoji">💡</div>
+        <h3>Saving vs Spending</h3>
+        <p>Understand needs and wants to make smarter choices every day.</p>
+        <button class="topic-btn">Read more ↓</button>
+        <div class="topic-expand">
+          <div class="explain">
+            <strong>Need vs Want:</strong> A need is something essential (food, medicine, rent). A want is something you desire but can live without (new shoes when old ones work, extra snacks). Confusing the two is how most households overspend.
+            <br><br><strong>The 50-30-20 Rule:</strong> 50% on needs, 30% on wants, 20% on savings. Even adjusting this slightly can transform your family's financial health.
+          </div>
+          <div class="dos-donts">
+            <div class="dos"><strong>✅ Do's</strong><ul><li>Save first, spend second</li><li>Wait 24 hrs before big purchases</li><li>Use a shopping list</li></ul></div>
+            <div class="donts"><strong>❌ Don'ts</strong><ul><li>Buy on impulse</li><li>Use credit for daily needs</li><li>Compare with neighbours</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card sky" onclick="toggleTopic(this)">
+        <div class="topic-emoji">🏧</div>
+        <h3>Banking Basics</h3>
+        <p>Accounts, ATMs, UPI, and how the modern banking system works.</p>
+        <button class="topic-btn">Read more ↓</button>
+        <div class="topic-expand">
+          <div class="explain">
+            <strong>Bank Account:</strong> A safe place to store money and earn small interest (2–4%). Always safer than keeping cash at home.
+            <br><strong>ATM:</strong> Withdraw cash anytime. Never share your PIN with anyone — not even bank staff.
+            <br><strong>UPI:</strong> Unified Payments Interface. Send/receive money instantly using just a phone number or UPI ID. Free and instant.
+          </div>
+          <div class="dos-donts">
+            <div class="dos"><strong>✅ Do's</strong><ul><li>Keep your PIN secret</li><li>Use official bank apps</li><li>Check statements monthly</li></ul></div>
+            <div class="donts"><strong>❌ Don'ts</strong><ul><li>Share OTP with anyone</li><li>Use public WiFi for banking</li><li>Click unknown payment links</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card coral" onclick="toggleTopic(this)">
+        <div class="topic-emoji">📋</div>
+        <h3>Loans, EMIs & Interest</h3>
+        <p>Understand what borrowing actually costs you in real money.</p>
+        <button class="topic-btn">Read more ↓</button>
+        <div class="topic-expand">
+          <div class="explain">
+            <strong>EMI (Equated Monthly Instalment):</strong> When you borrow money, you repay it in fixed monthly amounts including interest. A ₹1,00,000 loan at 12% annual interest for 2 years = ₹4,707/month. Total paid = ₹1,12,968 — you paid ₹12,968 as interest!
+            <br><br><strong>Rule of thumb:</strong> Your total EMIs should never exceed 40% of your monthly income.
+          </div>
+          <div class="dos-donts">
+            <div class="dos"><strong>✅ Do's</strong><ul><li>Compare interest rates</li><li>Read full loan agreement</li><li>Pay EMI on time always</li></ul></div>
+            <div class="donts"><strong>❌ Don'ts</strong><ul><li>Borrow from moneylenders at 5%/month (60%/year!)</li><li>Take loans for wants</li><li>Miss EMI payments</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topic-card purple" onclick="toggleTopic(this)">
+        <div class="topic-emoji">🛡️</div>
+        <h3>Insurance & Emergency Funds</h3>
+        <p>Protect what you have built before life surprises you.</p>
+        <button class="topic-btn">Read more ↓</button>
+        <div class="topic-expand">
+          <div class="explain">
+            <strong>Emergency Fund:</strong> Save 3–6 months of your family's expenses in a separate savings account. This is your safety net so you do not need to borrow when an emergency strikes.
+            <br><br><strong>Health Insurance:</strong> A ₹5 lakh family health cover can cost as little as ₹8,000–₹15,000 per year. Without it, one hospital stay can destroy years of savings.
+          </div>
+          <div class="dos-donts">
+            <div class="dos"><strong>✅ Do's</strong><ul><li>Build ₹10,000 emergency fund first</li><li>Get PM Jan Arogya Yojana if eligible</li><li>Insure income earner's life</li></ul></div>
+            <div class="donts"><strong>❌ Don'ts</strong><ul><li>Use emergency fund for non-emergencies</li><li>Buy insurance you don't understand</li><li>Skip health cover</li></ul></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 3: QUIZ -->
+<section id="quiz">
+  <div class="section-inner">
+    <div class="section-tag" style="background:rgba(232,168,48,0.2);color:var(--gold);">Feature 3</div>
+    <h2 class="section-h">Interactive Money Quiz</h2>
+    <p class="section-sub">Test your financial knowledge with real-life scenarios. Learn why each answer matters.</p>
+
+    <div class="quiz-container">
+      <div id="quizArea">
+        <div class="quiz-progress" id="quizProgress"></div>
+        <div class="quiz-q" id="quizQ"></div>
+        <div class="quiz-context" id="quizCtx"></div>
+        <div class="quiz-options" id="quizOpts"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-next" id="quizNext" onclick="nextQuestion()">Next Question →</button>
+      </div>
+      <div class="quiz-score" id="quizScore">
+        <div class="quiz-score-num" id="scoreNum"></div>
+        <div class="quiz-score-label">out of 5 correct</div>
+        <div class="quiz-score-msg" id="scoreMsg"></div>
+        <button class="quiz-restart" onclick="startQuiz()">Try Again ↺</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 4: CALCULATOR -->
+<section id="calculator">
+  <div class="section-inner">
+    <div class="section-tag sky">Feature 4</div>
+    <h2 class="section-h">EMI & Savings Calculator</h2>
+    <p class="section-sub">See the real numbers behind loans and savings goals — before you decide.</p>
+
+    <div class="calc-tabs">
+      <button class="calc-tab active" onclick="switchCalc('emi',this)">📋 EMI Calculator</button>
+      <button class="calc-tab" onclick="switchCalc('savings',this)">💰 Savings Goal</button>
+      <button class="calc-tab" onclick="switchCalc('budget',this)">🏠 Budget Planner</button>
+    </div>
+
+    <!-- EMI Panel -->
+    <div class="calc-panel active" id="calc-emi">
+      <div class="calc-form">
+        <div class="form-group">
+          <label>Loan Amount (₹)</label>
+          <input type="number" id="emi-amount" value="100000" oninput="calcEMI()">
+        </div>
+        <div class="form-group">
+          <label>Annual Interest Rate (%)</label>
+          <input type="number" id="emi-rate" value="10" step="0.1" oninput="calcEMI()">
+        </div>
+        <div class="form-group">
+          <label>Loan Duration (months)</label>
+          <input type="number" id="emi-months" value="24" oninput="calcEMI()">
+        </div>
+        <p style="font-size:0.8rem;color:var(--ink-mid);padding:12px;background:var(--gold-light);border-radius:8px;border-left:3px solid var(--gold);">
+          💡 <strong>Tip:</strong> Moneylenders often charge 5%/month = 60% annually. Always compare rates before borrowing.
+        </p>
+      </div>
+      <div class="calc-result" id="emi-result">
+        <div class="calc-result-title">Monthly EMI</div>
+        <div class="calc-result-big" id="emi-monthly">₹4,614</div>
+        <div class="calc-result-rows">
+          <div class="calc-row"><span class="calc-row-label">Principal amount</span><span class="calc-row-val" id="emi-principal">₹1,00,000</span></div>
+          <div class="calc-row"><span class="calc-row-label">Total interest paid</span><span class="calc-row-val" style="color:#F09595;" id="emi-interest">₹10,748</span></div>
+          <div class="calc-row"><span class="calc-row-label">Total amount paid</span><span class="calc-row-val" id="emi-total">₹1,10,748</span></div>
+        </div>
+        <div class="calc-bar"><div class="calc-bar-fill" id="emi-bar" style="width:9%"></div></div>
+        <div class="calc-tip" id="emi-tip">Interest is 9% of total repayment. That's a reasonable loan.</div>
+      </div>
+    </div>
+
+    <!-- Savings Panel -->
+    <div class="calc-panel" id="calc-savings">
+      <div class="calc-form">
+        <div class="form-group">
+          <label>Savings Goal (₹)</label>
+          <input type="number" id="sv-goal" value="50000" oninput="calcSavings()">
+        </div>
+        <div class="form-group">
+          <label>Monthly Savings Amount (₹)</label>
+          <input type="number" id="sv-monthly" value="2000" oninput="calcSavings()">
+        </div>
+        <div class="form-group">
+          <label>Annual Return Rate (%)</label>
+          <input type="number" id="sv-rate" value="7" step="0.1" oninput="calcSavings()">
+        </div>
+        <p style="font-size:0.8rem;color:var(--ink-mid);padding:12px;background:var(--forest-light);border-radius:8px;border-left:3px solid var(--forest-mid);">
+          🏦 <strong>Try:</strong> PPF gives ~7.1%, SBI RD gives ~6.5%, Post Office MIS gives ~7.4% (2024).
+        </p>
+      </div>
+      <div class="calc-result" id="sv-result">
+        <div class="calc-result-title">Time to reach goal</div>
+        <div class="calc-result-big" id="sv-months">23 months</div>
+        <div class="calc-result-rows">
+          <div class="calc-row"><span class="calc-row-label">Total deposited</span><span class="calc-row-val" id="sv-deposited">₹46,000</span></div>
+          <div class="calc-row"><span class="calc-row-label">Interest earned</span><span class="calc-row-val" style="color:#5DCAA5;" id="sv-interest">₹2,847</span></div>
+          <div class="calc-row"><span class="calc-row-label">Final amount</span><span class="calc-row-val" id="sv-total">₹50,000</span></div>
+        </div>
+        <div class="calc-tip" id="sv-tip">Start saving today — even ₹500/month makes a difference over time.</div>
+      </div>
+    </div>
+
+    <!-- Budget Panel -->
+    <div class="calc-panel" id="calc-budget">
+      <div class="calc-form">
+        <div class="form-group">
+          <label>Monthly Family Income (₹)</label>
+          <input type="number" id="bg-income" value="25000" oninput="calcBudget()">
+        </div>
+        <div class="form-group">
+          <label>Rent / Housing (₹)</label>
+          <input type="number" id="bg-rent" value="7000" oninput="calcBudget()">
+        </div>
+        <div class="form-group">
+          <label>Groceries & Food (₹)</label>
+          <input type="number" id="bg-food" value="6000" oninput="calcBudget()">
+        </div>
+        <div class="form-group">
+          <label>School / Education (₹)</label>
+          <input type="number" id="bg-school" value="2000" oninput="calcBudget()">
+        </div>
+        <div class="form-group">
+          <label>EMIs & Loans (₹)</label>
+          <input type="number" id="bg-emi" value="3000" oninput="calcBudget()">
+        </div>
+      </div>
+      <div class="calc-result" id="bg-result">
+        <div class="calc-result-title">Available After Fixed Expenses</div>
+        <div class="calc-result-big" id="bg-left">₹7,000</div>
+        <div class="calc-result-rows">
+          <div class="calc-row"><span class="calc-row-label">Total fixed expenses</span><span class="calc-row-val" id="bg-fixed">₹18,000</span></div>
+          <div class="calc-row"><span class="calc-row-label">Suggested savings (20%)</span><span class="calc-row-val" style="color:#5DCAA5;" id="bg-save">₹5,000</span></div>
+          <div class="calc-row"><span class="calc-row-label">Flexible spending</span><span class="calc-row-val" id="bg-flex">₹2,000</span></div>
+        </div>
+        <div class="calc-bar"><div class="calc-bar-fill" id="bg-bar" style="width:72%"></div></div>
+        <div class="calc-tip" id="bg-tip">72% of income is committed. Try to keep fixed expenses below 60%.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 5: SCAM AWARENESS -->
+<section id="scams">
+  <div class="section-inner">
+    <div class="section-tag coral">Feature 5</div>
+    <h2 class="section-h">Fraud & Scam Awareness</h2>
+    <p class="section-sub">Learn to spot financial scams before they cost your family everything they have saved.</p>
+
+    <div class="scam-intro">
+      <div class="scam-cards">
+        <div class="scam-card">
+          <div class="scam-flag">📞</div>
+          <div>
+            <h4>Fake KYC / Bank Call Scam</h4>
+            <p>Caller claims to be from your bank and asks for OTP or account details to "update KYC." Banks NEVER ask for OTP on phone. Hang up immediately.</p>
+          </div>
+        </div>
+        <div class="scam-card">
+          <div class="scam-flag">📲</div>
+          <div>
+            <h4>WhatsApp Investment Scam</h4>
+            <p>"Guaranteed 50% returns in 30 days." No legitimate investment guarantees returns. These groups collect money and vanish. If it sounds too good, it is.</p>
+          </div>
+        </div>
+        <div class="scam-card">
+          <div class="scam-flag">🎁</div>
+          <div>
+            <h4>Lottery / Prize Scam</h4>
+            <p>"You've won ₹5 lakhs! Pay ₹5,000 tax to claim your prize." You cannot win a prize you never entered. No legitimate lottery charges you to collect winnings.</p>
+          </div>
+        </div>
+        <div class="scam-card">
+          <div class="scam-flag">🔗</div>
+          <div>
+            <h4>Fake UPI / QR Code Scam</h4>
+            <p>Scammers send QR codes saying "scan to receive money." Scanning a QR code SENDS money from your account — it never receives. Never scan unknown codes.</p>
+          </div>
+        </div>
+        <div class="scam-card">
+          <div class="scam-flag">🏠</div>
+          <div>
+            <h4>Chit Fund / Pyramid Scheme</h4>
+            <p>Informal chit funds or "chain networks" that promise income by recruiting members. Early members profit; late joiners always lose. These are illegal.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scam-checker">
+        <h3>🔍 Scam Check — Does this look suspicious?</h3>
+        <p>Check all that apply to the offer you received. See if it could be a scam.</p>
+        <ul class="scam-checklist" id="scamList">
+          <li class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <span>They promised unusually high returns (more than 15% per year)</span>
+          </li>
+          <li class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <span>They asked for an upfront payment to "unlock" your prize or loan</span>
+          </li>
+          <li class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <span>They asked for your OTP, PIN, or password</span>
+          </li>
+          <li class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <span>They said the offer expires very soon and you must decide NOW</span>
+          </li>
+          <li class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <span>The contact came via WhatsApp, Telegram, or an unknown number</span>
+          </li>
+          <li class="check-item" onclick="toggleCheck(this)">
+            <div class="check-box">✓</div>
+            <span>You cannot find their official registered address or SEBI/RBI registration</span>
+          </li>
+        </ul>
+        <div class="scam-verdict" id="scamVerdict"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS: GOVERNMENT SCHEMES -->
+<section id="schemes">
+  <div class="section-inner">
+    <div class="section-tag" style="background:rgba(0,119,182,0.1);color:var(--sky);">Bonus Feature</div>
+    <h2 class="section-h">Government Schemes for Families</h2>
+    <p class="section-sub">Free and subsidised government programmes that most eligible families never claim. Check which ones apply to you.</p>
+
+    <div class="schemes-grid">
+      <div class="scheme-card" style="background:#EAF7FF;border-color:#B5D4F4;">
+        <span class="scheme-badge" style="background:#B5D4F4;color:#0C447C;">Health</span>
+        <h4>PM Jan Arogya Yojana (Ayushman Bharat)</h4>
+        <p>Free health coverage up to ₹5 lakh per year for hospitalisation. Available to 50+ crore low-income Indians.</p>
+        <div class="scheme-detail" style="color:var(--sky);">→ Check eligibility at pmjay.gov.in</div>
+      </div>
+      <div class="scheme-card" style="background:#EAF7EE;border-color:#9FE1CB;">
+        <span class="scheme-badge" style="background:#9FE1CB;color:#085041;">Savings</span>
+        <h4>Public Provident Fund (PPF)</h4>
+        <p>15-year government savings scheme. 7.1% interest (tax-free). Start with as little as ₹500/year. Safe and sovereign.</p>
+        <div class="scheme-detail" style="color:var(--forest-mid);">→ Open at any post office or SBI</div>
+      </div>
+      <div class="scheme-card" style="background:#FBF3E1;border-color:#FAC775;">
+        <span class="scheme-badge" style="background:#FAC775;color:#633806;">Insurance</span>
+        <h4>PM Jeevan Jyoti Bima Yojana</h4>
+        <p>Life insurance of ₹2 lakh for just ₹436/year (₹1.20/day). Renews every year. Any bank account holder aged 18–50 eligible.</p>
+        <div class="scheme-detail" style="color:var(--gold-dark);">→ Available at all major banks</div>
+      </div>
+      <div class="scheme-card" style="background:#FFF0F0;border-color:#F7C1C1;">
+        <span class="scheme-badge" style="background:#F7C1C1;color:#791F1F;">Accident</span>
+        <h4>PM Suraksha Bima Yojana</h4>
+        <p>Accidental death or disability cover of ₹2 lakh for just ₹20/year. Renewable one-year personal accident cover.</p>
+        <div class="scheme-detail" style="color:var(--coral);">→ Enrol via your bank account</div>
+      </div>
+      <div class="scheme-card" style="background:#F0EEF9;border-color:#AFA9EC;">
+        <span class="scheme-badge" style="background:#AFA9EC;color:#26215C;">Students</span>
+        <h4>National Scholarship Portal</h4>
+        <p>Central and state scholarships for students from Class 1 to PhD. Income-based eligibility. Apply once, receive directly in bank.</p>
+        <div class="scheme-detail" style="color:#534AB7;">→ scholarships.gov.in</div>
+      </div>
+      <div class="scheme-card" style="background:#EAF3DE;border-color:#C0DD97;">
+        <span class="scheme-badge" style="background:#C0DD97;color:#173404;">Banking</span>
+        <h4>PM Jan Dhan Yojana</h4>
+        <p>Zero-balance bank account with free RuPay debit card, ₹1 lakh accident insurance, and ₹10,000 overdraft facility.</p>
+        <div class="scheme-detail" style="color:var(--forest-mid);">→ Open at any public sector bank</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>SmartMoney</strong>
+  <p style="margin-top:0.5rem;">Financial Awareness for Families & Students · No login required · Free forever</p>
+  <p style="margin-top:0.25rem;font-size:0.75rem;opacity:0.6;">This platform provides general financial education only. Always consult a qualified advisor for personal financial decisions.</p>
+</footer>
+
+<script>
+// ── TOPIC TOGGLE ──
+function toggleTopic(card) {
+  const isOpen = card.classList.contains('open');
+  document.querySelectorAll('.topic-card').forEach(c => c.classList.remove('open'));
+  if (!isOpen) {
+    card.classList.add('open');
+    const btn = card.querySelector('.topic-btn');
+    if (btn) btn.textContent = 'Show less ↑';
+  } else {
+    const btn = card.querySelector('.topic-btn');
+    if (btn) btn.textContent = 'Read more ↓';
+  }
+}
+
+// ── QUIZ ──
+const questions = [
+  {
+    q: "Riya's family earns ₹20,000/month. Their expenses total ₹22,000. What should they do FIRST?",
+    ctx: "This situation is called a 'budget deficit' — spending more than you earn.",
+    opts: ["Take a personal loan to cover the gap", "Cut non-essential expenses immediately", "Use a credit card for the shortfall", "Ask relatives for money"],
+    correct: 1,
+    explain: "✅ Correct! Before borrowing, always look for expenses to cut. Loans add interest costs and make the situation worse over time. Review the budget and eliminate wants first."
+  },
+  {
+    q: "You receive a WhatsApp message: 'Invest ₹10,000 today, get ₹50,000 in 60 days — guaranteed!' What is this?",
+    ctx: "No legitimate investment in India or anywhere guarantees 400% returns in 60 days.",
+    opts: ["A great investment opportunity", "A government scheme", "A financial scam", "A bank fixed deposit offer"],
+    correct: 2,
+    explain: "✅ Correct! This is a classic Ponzi scheme or investment fraud. Legitimate investments never guarantee unusually high returns. The moment you see 'guaranteed returns' above 15%, walk away."
+  },
+  {
+    q: "Arjun takes a ₹50,000 loan from a moneylender at 5% per month. What is the annual interest rate?",
+    ctx: "Monthly rates sound small, but annual rates reveal the true cost.",
+    opts: ["5% per year", "15% per year", "35% per year", "60% per year"],
+    correct: 3,
+    explain: "✅ Correct! 5% per month × 12 months = 60% per year. On ₹50,000, that's ₹30,000 in interest annually! Banks offer personal loans at 10-18%. Always compare before borrowing."
+  },
+  {
+    q: "A caller says: 'I'm from SBI. Your account will be blocked. Give me your OTP to verify.' What should you do?",
+    ctx: "Banks have a strict policy: they will never ask for your OTP, PIN, or password.",
+    opts: ["Give the OTP quickly to avoid account block", "Ask them to repeat the OTP twice", "Hang up and call your bank's official number", "Give only the first 3 digits"],
+    correct: 2,
+    explain: "✅ Correct! Hang up immediately. No bank, government body, or official organisation will ever ask for your OTP or PIN. Call your bank's number from the back of your card to verify."
+  },
+  {
+    q: "Priya has ₹5,000 saved and her family needs it for a festival celebration. What is the wisest choice?",
+    ctx: "This tests the difference between emergency funds and celebration expenses.",
+    opts: ["Spend all ₹5,000 on the celebration", "Keep ₹5,000 as emergency fund and borrow for celebration", "Spend ₹2,000 and keep ₹3,000 as savings", "Do not celebrate at all"],
+    correct: 2,
+    explain: "✅ Correct! Balance is key. A modest celebration is fine — but protecting your emergency savings is essential. Spending responsibly (₹2,000) while keeping most savings (₹3,000) is wise financial thinking."
+  }
+];
+
+let currentQ = 0, score = 0, answered = false;
+
+function startQuiz() {
+  currentQ = 0; score = 0; answered = false;
+  document.getElementById('quizArea').style.display = 'block';
+  document.getElementById('quizScore').classList.remove('show');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q = questions[currentQ];
+  const prog = document.getElementById('quizProgress');
+  prog.innerHTML = questions.map((_,i) => `<div class="quiz-dot${i < currentQ ? ' done' : i === currentQ ? ' active' : ''}"></div>`).join('');
+  document.getElementById('quizQ').textContent = `Q${currentQ+1}. ${q.q}`;
+  document.getElementById('quizCtx').textContent = q.ctx;
+  const letters = ['A','B','C','D'];
+  document.getElementById('quizOpts').innerHTML = q.opts.map((o,i) =>
+    `<button class="quiz-opt" data-letter="${letters[i]}" onclick="answer(this,${i})">${o}</button>`
+  ).join('');
+  document.getElementById('quizFeedback').className = 'quiz-feedback';
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('quizNext').className = 'quiz-next';
+}
+
+function answer(btn, idx) {
+  if (answered) return;
+  answered = true;
+  const q = questions[currentQ];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  const fb = document.getElementById('quizFeedback');
+  if (idx === q.correct) {
+    btn.classList.add('correct');
+    fb.className = 'quiz-feedback correct show';
+    fb.textContent = q.explain;
+    score++;
+  } else {
+    btn.classList.add('wrong');
+    opts[q.correct].classList.add('correct');
+    fb.className = 'quiz-feedback wrong show';
+    fb.textContent = '❌ Not quite. ' + q.explain;
+  }
+  const nxt = document.getElementById('quizNext');
+  nxt.className = 'quiz-next show';
+  nxt.textContent = currentQ < questions.length - 1 ? 'Next Question →' : 'See My Score →';
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= questions.length) {
+    document.getElementById('quizArea').style.display = 'none';
+    const sc = document.getElementById('quizScore');
+    sc.classList.add('show');
+    document.getElementById('scoreNum').textContent = `${score}/5`;
+    const msgs = [
+      "Keep learning! Every concept you understand helps your family.",
+      "Good start! A few more reads and you'll be money-smart.",
+      "Solid! You understand the basics that matter most.",
+      "Great job! You're well on your way to financial awareness.",
+      "Excellent! You're ready to make smart money choices for your family! 🏆"
+    ];
+    document.getElementById('scoreMsg').textContent = msgs[score];
+  } else {
+    renderQuestion();
+  }
+}
+
+startQuiz();
+
+// ── CALCULATORS ──
+function switchCalc(id, btn) {
+  document.querySelectorAll('.calc-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.calc-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('calc-' + id).classList.add('active');
+}
+
+function fmt(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+
+function calcEMI() {
+  const P = parseFloat(document.getElementById('emi-amount').value) || 0;
+  const r = (parseFloat(document.getElementById('emi-rate').value) || 0) / 12 / 100;
+  const n = parseInt(document.getElementById('emi-months').value) || 1;
+  let emi;
+  if (r === 0) { emi = P / n; } else { emi = P * r * Math.pow(1+r, n) / (Math.pow(1+r, n) - 1); }
+  const total = emi * n;
+  const interest = total - P;
+  const pct = Math.round((interest / total) * 100);
+  document.getElementById('emi-monthly').textContent = fmt(emi);
+  document.getElementById('emi-principal').textContent = fmt(P);
+  document.getElementById('emi-interest').textContent = fmt(interest);
+  document.getElementById('emi-total').textContent = fmt(total);
+  document.getElementById('emi-bar').style.width = Math.min(pct, 100) + '%';
+  document.getElementById('emi-tip').textContent = `Interest is ${pct}% of total repayment. ${pct > 30 ? 'Consider a lower rate or shorter term.' : 'That is a manageable loan cost.'}`;
+}
+
+function calcSavings() {
+  const goal = parseFloat(document.getElementById('sv-goal').value) || 0;
+  const monthly = parseFloat(document.getElementById('sv-monthly').value) || 1;
+  const r = (parseFloat(document.getElementById('sv-rate').value) || 0) / 12 / 100;
+  let months = 0, acc = 0;
+  while (acc < goal && months < 600) { acc = acc * (1 + r) + monthly; months++; }
+  const deposited = monthly * months;
+  const interest = acc - deposited;
+  document.getElementById('sv-months').textContent = months < 600 ? months + ' months' : '50+ years';
+  document.getElementById('sv-deposited').textContent = fmt(deposited);
+  document.getElementById('sv-interest').textContent = fmt(interest);
+  document.getElementById('sv-total').textContent = fmt(acc);
+  document.getElementById('sv-tip').textContent = `You'll earn ${fmt(interest)} in interest — that's free money from compound growth!`;
+}
+
+function calcBudget() {
+  const income = parseFloat(document.getElementById('bg-income').value) || 0;
+  const rent = parseFloat(document.getElementById('bg-rent').value) || 0;
+  const food = parseFloat(document.getElementById('bg-food').value) || 0;
+  const school = parseFloat(document.getElementById('bg-school').value) || 0;
+  const emi = parseFloat(document.getElementById('bg-emi').value) || 0;
+  const fixed = rent + food + school + emi;
+  const left = income - fixed;
+  const save = Math.max(0, income * 0.2);
+  const flex = left - save;
+  const pct = income > 0 ? Math.round((fixed / income) * 100) : 0;
+  document.getElementById('bg-left').textContent = fmt(Math.max(0, left));
+  document.getElementById('bg-fixed').textContent = fmt(fixed);
+  document.getElementById('bg-save').textContent = fmt(save);
+  document.getElementById('bg-flex').textContent = fmt(Math.max(0, flex));
+  document.getElementById('bg-bar').style.width = Math.min(pct, 100) + '%';
+  document.getElementById('bg-tip').textContent = `${pct}% of income is in fixed expenses. ${pct > 70 ? '⚠️ This is high — try to reduce EMIs or food costs.' : 'Good — you have room to save and spend flexibly.'}`;
+}
+
+calcEMI(); calcSavings(); calcBudget();
+
+// ── SCAM CHECKER ──
+function toggleCheck(item) {
+  item.classList.toggle('checked');
+  const total = document.querySelectorAll('.check-item').length;
+  const checked = document.querySelectorAll('.check-item.checked').length;
+  const verdict = document.getElementById('scamVerdict');
+  if (checked === 0) { verdict.className = 'scam-verdict'; return; }
+  if (checked >= 3) {
+    verdict.className = 'scam-verdict danger';
+    verdict.textContent = `⛔ High risk of scam! ${checked} red flags detected. Do NOT proceed. Report to cybercrime.gov.in or call 1930 (National Cyber Helpline).`;
+  } else if (checked >= 1) {
+    verdict.className = 'scam-verdict danger';
+    verdict.textContent = `⚠️ Caution! ${checked} red flag(s) found. Verify independently before taking any action. Contact your bank or a trusted advisor first.`;
+  }
+}
+</script>
+</body>
+</html>
